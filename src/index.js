@@ -3,6 +3,8 @@ import { ApolloServer } from 'apollo-server-express';
 import { createServer } from 'http';
 import bodyParser from 'body-parser';
 
+import models from './models';
+
 require('dotenv').config();
 
 import schema from './schema';
