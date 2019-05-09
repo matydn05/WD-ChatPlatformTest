@@ -1,12 +1,13 @@
 # This is an empty type, meant to be extended by other entities.
-type Query {
-  users: [User]
-}
 
 type User {
   id: ID!
   username: String
-  firstname: String
-  lastname: String
-  password: String
+  firstName: String
+  lastName: String
+}
+
+type Query {
+  users: [User]!
+  user(id: ID!): User
 }
