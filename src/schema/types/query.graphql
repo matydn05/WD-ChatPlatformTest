@@ -1,4 +1,12 @@
 # This is an empty type, meant to be extended by other entities.
 type Query {
-  _empty: String
+  users: [User]
+}
+
+type User {
+  id: ID!
+  username: String
+  firstname: String
+  lastname: String
+  password: String
 }
