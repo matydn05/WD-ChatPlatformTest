@@ -16,9 +16,7 @@ export default (sequelize, DataTypes) => {
   Salt.getPasswordSalt = async function () {
     const lastSalt = await this.getLast()
 
-    if (lastSalt) return lastSalt
-
-    return this.createRandom()
+    return lastSalt || this.createRandom()
   }
 
   Salt.getLast = function () {
