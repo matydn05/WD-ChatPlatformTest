@@ -3,21 +3,21 @@
     "dialect": "postgres",
     "host": "127.0.0.1",
     "database": "chatdatabase",
-    "username": "maty",
+    "username": "chatdatabase",
     "password": 3266
   },
   "test": {
     "dialect": "postgres",
     "host": "127.0.0.1",
     "database": "chatdatabase",
-    "username": "maty",
+    "username": "chatdatabase",
     "password": 3266
   },
   "production": {
     "dialect": "postgres",
     "host": "127.0.0.1",
     "database": "chatdatabase",
-    "username": "maty",
+    "username": "chatdatabase",
     "password": 3266
   }
 }
