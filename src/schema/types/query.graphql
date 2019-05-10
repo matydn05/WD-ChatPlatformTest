@@ -1,13 +1,3 @@
-# This is an empty type, meant to be extended by other entities.
-
-type User {
-  id: ID!
-  username: String
-  firstName: String
-  lastName: String
-}
-
 type Query {
-  users: [User]!
-  user(id: ID!): User
+  _empty: String
 }
