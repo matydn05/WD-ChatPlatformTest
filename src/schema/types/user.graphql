@@ -11,5 +11,5 @@ type Query {
 }
 
 type Mutation {
-    createuser(username: String!, firstName: String!, lastName: String!, password: String!): User
+  createuser(username: String!, firstName: String!, lastName: String!, password: String!): User
 }
