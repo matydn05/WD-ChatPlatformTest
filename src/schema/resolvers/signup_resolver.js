@@ -11,7 +11,7 @@ const resolvers = {
       if (count > 0) {
         return { authError: 'The username already exists' }
       } else {
-        const user = await models.user.create({ username, password: password, lastName: lastName, firstName: firstName })
+        const user = await models.user.create({ username, password, lastName, firstName })
         return {
           user: user,
           jwt: createToken(userInformation(user))
