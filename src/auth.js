@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 
 const secret = process.env.JWT_SECRET
 
-export const createToken = async (user) => {
+const createToken = async (user) => {
   const createToken = jwt.sign(
     user,
     secret,
@@ -13,3 +13,5 @@ export const createToken = async (user) => {
   )
   return createToken
 }
+
+export default createToken
