@@ -22,7 +22,7 @@ const resolvers = {
   }
 }
 
-function userInformation (user) {
+export function userInformation (user) {
   const information = user.username
   return { information }
 }
