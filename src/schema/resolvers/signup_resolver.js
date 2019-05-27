@@ -14,7 +14,7 @@ const resolvers = {
         const user = await models.user.create({ username, password, lastName, firstName })
         return {
           user: user,
-          jwt: createToken(userInformation(user))
+          jwt: createToken(getNonSensibleInformation(user))
 
         }
       }
@@ -22,9 +22,11 @@ const resolvers = {
   }
 }
 
-export function userInformation (user) {
-  const information = user.username
-  return { information }
+function getNonSensibleInformation (user) {
+  return {
+    username: user.username,
+    firstName: user.firstName
+  }
 }
 
 export default resolvers
