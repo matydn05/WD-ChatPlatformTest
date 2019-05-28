@@ -17,7 +17,7 @@ const resolvers = {
       } else {
         return {
           user: user,
-          jwt: createToken(await models.user.getNonSensibleInformation())
+          jwt: createToken(await models.user.getNonSensibleInformation(user))
         }
       }
     }
