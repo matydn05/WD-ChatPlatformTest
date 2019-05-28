@@ -14,18 +14,11 @@ const resolvers = {
         const user = await models.user.create({ username, password, lastName, firstName })
         return {
           user: user,
-          jwt: createToken(getNonSensibleInformation(user))
+          jwt: createToken(await models.user.getNonSensibleInformation())
 
         }
       }
     }
-  }
-}
-
-function getNonSensibleInformation (user) {
-  return {
-    username: user.username,
-    firstName: user.firstName
   }
 }
 
