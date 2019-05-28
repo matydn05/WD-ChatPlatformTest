@@ -1,11 +1,10 @@
+import 'dotenv/config'
 import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
 import { createServer } from 'http'
 import bodyParser from 'body-parser'
 import schema from './schema'
 import models from './models'
-
-require('dotenv').config()
 
 const port = process.env.PORT || 3001
 
