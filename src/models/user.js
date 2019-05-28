@@ -37,6 +37,13 @@ export default (sequelize, DataTypes) => {
   }
 
   // Class methods
+  User.getNonSensibleInformation = async function (user) {
+    return {
+      username: user.username,
+      firstName: user.firstName
+    }
+  }
+
   User.hashPasswordHook = async function (user) {
     if (!user.password) return user
 
