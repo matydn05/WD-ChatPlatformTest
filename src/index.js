@@ -12,11 +12,14 @@ const app = express()
 
 passport.initialize()
 
-app.post('/graphql', passport.authenticate('jwt', { session: false }),
-  function (req, res) {
-    res.send(req.user)
-  }
-)
+app.use('/graphql', (req, res, next) => {
+  passport.authenticate('jwt', { session: false }, (user) => {
+    if (user) {
+      req.user = user
+    }
+    next()
+  })(req, res, next)
+})
 
 const server = new ApolloServer({
   ...schema,
