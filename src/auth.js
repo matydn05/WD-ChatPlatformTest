@@ -8,7 +8,8 @@ const createToken = (user) => {
     user,
     secret,
     {
-      expiresIn: '10d'
+      expiresIn: '10d',
+      sub: user.id
     }
   )
   return createToken
