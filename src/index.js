@@ -4,17 +4,30 @@ import { ApolloServer } from 'apollo-server-express'
 import { createServer } from 'http'
 import bodyParser from 'body-parser'
 import schema from './schema'
-import models from './models'
+import passport from 'passport-jwt'
 
 const port = process.env.PORT || 3001
 
 const app = express()
 
+passport.initialize()
+
+app.post('/graphql', passport.authenticate('jwt', { session: false }),
+  function (req, res) {
+    res.send(req.user)
+  }
+)
+
 const server = new ApolloServer({
   ...schema,
   instrospection: true,
   playground: true,
-  tracing: true
+  tracing: true,
+  context: ({ req }) => {
+    // const token = req.headers.authorization || ''
+    const user = req.user
+    return { user }
+  }
 })
 
 server.applyMiddleware({ app })
