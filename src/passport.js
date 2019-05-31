@@ -9,7 +9,6 @@ jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()
 jwtOptions.secretOrKeyProvider = process.env.JWT_SECRET
 
 const strategy = new JwtStrategy(jwtOptions, async (jwtPayload, done) => {
-  console.log('payload received', jwtPayload)
   try {
     const user = await models.user.findOne({ where: { id: jwtPayload.sub } })
     if (user) {
