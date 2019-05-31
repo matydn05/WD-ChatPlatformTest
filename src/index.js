@@ -13,7 +13,10 @@ const app = express()
 passport.initialize()
 
 app.use('/graphql', (req, res, next) => {
-  passport.authenticate('jwt', { session: false }, (user) => {
+  passport.authenticate('jwt', { session: false }, (err, user) => {
+    if (err) {
+      next(err)
+    }
     if (user) {
       req.user = user
     }
