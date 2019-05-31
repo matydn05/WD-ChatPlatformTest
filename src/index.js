@@ -27,9 +27,7 @@ const server = new ApolloServer({
   playground: true,
   tracing: true,
   context: ({ req }) => {
-    // const token = req.headers.authorization || ''
-    const user = req.user
-    return { user }
+    return { user: req.user }
   }
 })
 
