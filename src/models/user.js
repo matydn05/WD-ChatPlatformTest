@@ -39,6 +39,7 @@ export default (sequelize, DataTypes) => {
   // Class methods
   User.getNonSensibleInformation = async function (user) {
     return {
+      id: user.id,
       username: user.username,
       firstName: user.firstName
     }

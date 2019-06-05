@@ -2,19 +2,23 @@ import 'dotenv/config'
 import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
 import { createServer } from 'http'
-import bodyParser from 'body-parser'
 import schema from './schema'
-import models from './models'
+import passportStrategy from './passportStrategy'
 
 const port = process.env.PORT || 3001
 
 const app = express()
 
+app.use(passportStrategy)
+
 const server = new ApolloServer({
   ...schema,
   instrospection: true,
   playground: true,
-  tracing: true
+  tracing: true,
+  context: ({ req }) => {
+    return { user: req.user }
+  }
 })
 
 server.applyMiddleware({ app })
