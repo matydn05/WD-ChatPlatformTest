@@ -2,27 +2,14 @@ import 'dotenv/config'
 import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
 import { createServer } from 'http'
-import bodyParser from 'body-parser'
 import schema from './schema'
-import passport from 'passport-jwt'
+import passportStrategy from './passportStrategy'
 
 const port = process.env.PORT || 3001
 
 const app = express()
 
-passport.initialize()
-
-app.use('/graphql', (req, res, next) => {
-  passport.authenticate('jwt', { session: false }, (err, user) => {
-    if (err) {
-      next(err)
-    }
-    if (user) {
-      req.user = user
-    }
-    next()
-  })(req, res, next)
-})
+app.use(passportStrategy)
 
 const server = new ApolloServer({
   ...schema,
